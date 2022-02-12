@@ -5,6 +5,7 @@ F-Lab의 코틀린 스터디입니다.
 ## 팀원
 - [Charles](https://github.com/f-lab-charles/f-lab-charles)
 - [Olive](https://github.com/ssibongee)
+- [Kuma](https://github.com/daakludens)
 
 ## 스터디 시간 및 장소
 - 기간 : 2022년 2월 6일 ~ 2022년 4월 3일(예정)
