@@ -28,11 +28,11 @@ F-Lab의 코틀린 스터디입니다.
 - 스터디 방식 선정
 ### 1주차 
 - 좋은 코드
-- 담당자 : kuma
+- 담당자 : [Kuma](https://github.com/daakludens)
 
 ### 2주차
 - 가독성
-- 담당자 : kuma
+- 담당자 : [Kuma](https://github.com/daakludens)
 
 ### 3주차
 - 재사용성
