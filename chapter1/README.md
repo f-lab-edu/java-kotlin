@@ -1,3 +1,86 @@
+# 요약
+## 가변성 제한
+- var → val 사용
+- mutable보다 읽기 전용 컬렉션을 사용
+- 변이지점은 신중하게 설정
+- immutable 객체 사용해 가변성을 억제하거나 copy로 가변적 객체를 복사
+
+## 변수의 스코프 최소화
+- 전역 변수가 아닌 지역 변수 사용
+- 사용되는 변수의 스코프를 최대한 줄여 범위 최소화
+- 변수가 처음 생성될 때 초기화하는 걸 추천
+- 구조분해 선언
+- 변수 캡쳐링 주의
+[https://velog.io/@kmdngmn/Java-람다-캡처링-Lambda-Capturing-Java-8](https://velog.io/@kmdngmn/Java-%EB%9E%8C%EB%8B%A4-%EC%BA%A1%EC%B2%98%EB%A7%81-Lambda-Capturing-Java-8)
+
+## 플랫폼 타입 사용 자제
+- 플랫폼 타입 : 다른 언어에서 넘어온 타입(ex. Java → Generic)으로 nullable 여부를 파악할 수 없는 타입을 의미
+- not null 표시 !!
+- 연결하는 언어에서 null 여부를 표기하는 어노테이션을 사용해줘야 한다.
+
+## Inferred 타입으로 리턴 x
+- 리턴 타입을 명시
+- 지정한 타입은 신중하게 후관리 필요
+
+## 예외 활용
+- 아규먼트 - require
+제한 또는 valid 체크
+: 조건을 확인해 IllegalArgumentException을 던진다
+: 앞부분에서 코드를 쉽게 확인 (문서에 별도 표시)
+
+- 상태 - check
+: 조건을 확인해 IllegalStateException을 던진다
+: require 뒤에 사용
+
+- 참/거짓 - assert 계열
+JVM에서만 활성화
+코드를 자체 점검하여 테스트에 유용
+어느 지점에서 예외가 발생하는지 확인 가능
+스마트 캐스팅 활용
+
+- 그외에도 throws로 예외 호출
+
+## 사용자 정의 오류 대신 표준 오류 사용
+- 더 알려진 표준 오류를 사용해서 타 개발자가 더 빠르게 API에 적응하도록 돕는다
+
+## 결과 부족 시 null과 Failure 사용
+- 예상치 못한 일을 처리할 때 예외를 throw 하거나 null/sealed class를 사용
+- 예외는 코틀린에서 unchecked로 분류돼 처리하기 어려움
+- null과 sealed class는 오류 표현 뿐만 아니라 오류 처리도 간단히 가능
+- sealed class는 예외 발생 시 추가 정보를 넘길 때 사용하고 null은 전달할 정보가 없을 때 사용
+- 대신 그냥 null 반환보다 getOrNull 같이 null이 반환될 수 있다는 정보를 표시하는 게 좋음
+
+## 적절한 null 처리
+1. ? : 스마트 캐스팅
+- 스마트캐스팅 또는 Elvis 연산자로 nullable 처리
+
+Elvis 연산자?
+`?:`로 표현하며, `?:`의 왼쪽 객체가 non-null이면 그 객체의 값이 리턴되고, null이라면 `?:`
+의 오른쪽 값을 리턴
+출처 : [https://codechacha.com/ko/kotlin-elvis-operation/](https://codechacha.com/ko/kotlin-elvis-operation/)
+
+- 방어적 프로그래밍 vs 공격적 프로그래밍
+
+throws
+- 오류를 발생시켜 null이 있는 곳을 알려줄 수 있음
+
+nullable 안 나오도록 리팩터링
+- not null assertion(!!)의 경우 오남용의 여지가 있으니 사용에 주의
+- 다른 null 방식을 사용
+- null 보다는 빈 제네릴 객체를 사용
+- lateinit을 이용해 초기화를 늦추는 방식
+
+var, null, getter, setter 사용 안 됨
+null 허용 표시 없이 null 사용 방지 가능
+
+## use를 사용해 리소스 닫기
+- 자바에서 Closeable, AutoCloseable 인터페이스를 구현해 사용하던 close() 대신 코틀린에서는 use로 사용
+
+## 단위 테스트를 만들어라
+- 단위 테스트는 빠르고 회귀적으로 작성된 코드의 오류를 파악할 수 있어 유용한 도구
+- TDD 방식으로 테스트를 먼저 작성하고 코드를 작성하는 방법도 있다
+- 대신 단위 테스트를 작성하는데 많은 리소스와 작성 방식에 주의를 기울여야 한다.
+
 # 개인 독후감
 ## Charles
  이번 장은 안정성을 다루고 있다. 가장 기본적인 주제여서 코틀린에만 국한된
