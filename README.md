@@ -42,12 +42,16 @@ F-Lab의 코틀린 스터디입니다.
 
 ### 5주차
 - 객체 생성
+- 담당자 : [Charles](https://github.com/f-lab-charles/f-lab-charles)
 
 ### 6주차
 - 클래스 설계
+- 담당자 : [Charles](https://github.com/f-lab-charles/f-lab-charles)
 
 ### 7주차
 - 비용 줄이기
+- 담당자 : [Olive](https://github.com/ssibongee)
 
 ### 8주차
 - 효율적인 컬렉션 처리
+- 담당자 : [Taek](https://github.com/rudus1012)
